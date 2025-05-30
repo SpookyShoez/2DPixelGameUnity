@@ -14,7 +14,7 @@ public class MouseFollow : MonoBehaviour
         Vector3 mousePosition = Input.mousePosition;
         mousePosition = Camera.main.ScreenToWorldPoint(mousePosition);
 
-        Vector2 direction = mousePosition - mousePosition;
+        Vector2 direction = transform.position - mousePosition;
 
         transform.right = -direction;
     }
