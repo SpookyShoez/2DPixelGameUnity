@@ -108,7 +108,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2496280902185944101}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.374, y: -0.304, z: 0}
+  m_LocalPosition: {x: 0.374, y: -0.034, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -164,8 +164,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponInfo: {fileID: 11400000, guid: 251ffbab4af89e24b85f703b05b12c32, type: 2}
-  magicLaser: {fileID: 8146841657466950582, guid: fee9b0fdd4c01e5419294abb6244ed3a, type: 3}
-  magiclaserSpawnPoint: {fileID: 3478998670871450431}
+  magicLaserPrefab: {fileID: 8146841657466950582, guid: fee9b0fdd4c01e5419294abb6244ed3a, type: 3}
+  magicLaserSpawnPoint: {fileID: 3478998670871450431}
 --- !u!212 &2871744154761694714
 SpriteRenderer:
   m_ObjectHideFlags: 0

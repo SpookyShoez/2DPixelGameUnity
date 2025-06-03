@@ -5,10 +5,9 @@ using UnityEngine;
 public class Staff : MonoBehaviour, IWeapon
 {
     [SerializeField] private WeaponInfo weaponInfo; 
-    [SerializeField] private GameObject magicLaser;
-    [SerializeField] private Transform magiclaserSpawnPoint;
+    [SerializeField] private GameObject magicLaserPrefab;
+    [SerializeField] private Transform magicLaserSpawnPoint;
     
-
     private Animator myAnimator;
     
     readonly int AttackHash = Animator.StringToHash("Attack");
@@ -26,18 +25,18 @@ public class Staff : MonoBehaviour, IWeapon
     public void Attack()
     {
         myAnimator.SetTrigger(AttackHash);
-    }
-    
-    public void SpawnStaffProjectile() {
-        GameObject newLaser = Instantiate(magicLaser, magiclaserSpawnPoint.position, Quaternion.identity);
+    }    public void SpawnStaffProjectile()
+    {
+        GameObject newLaser = Instantiate(magicLaserPrefab, magicLaserSpawnPoint.position, Quaternion.identity);
+        newLaser.GetComponent<MagicLaser>().UpdateLaserRange(weaponInfo.weaponRange);
     }
 
-      public WeaponInfo GetWeaponInfo()
+    public WeaponInfo GetWeaponInfo()
     {
         return weaponInfo;
     }
-    
-     private void MouseFollowWithOffset()
+
+    private void MouseFollowWithOffset()
     {
         Vector3 mousePos = Input.mousePosition;
         Vector3 playerScreenPoint = Camera.main.WorldToScreenPoint(PlayerController.Instance.transform.position);
