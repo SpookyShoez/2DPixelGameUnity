@@ -4,15 +4,17 @@ using UnityEngine;
 
 public class RandomIdleAnimation : MonoBehaviour
 {
-    private Animator m_Animator;
+    private Animator myAnimator;
 
     private void Awake()
     {
-        m_Animator = GetComponent<Animator>();
+        myAnimator = GetComponent<Animator>();
     }
 
     private void Start() {
-        AnimatorStateInfo state = m_Animator.GetCurrentAnimatorStateInfo(0);
-        m_Animator.Play(state.fullPathHash, -1, Random.Range(0f, 1f));
+        if (!myAnimator) { return; }
+        
+        AnimatorStateInfo state = myAnimator.GetCurrentAnimatorStateInfo(0);
+        myAnimator.Play(state.fullPathHash, -1, Random.Range(0f, 1f));
     }
 }
