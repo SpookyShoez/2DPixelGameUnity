@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 815949821062908556}
   - component: {fileID: 3878888605988941971}
   - component: {fileID: 2957483929781497622}
+  - component: {fileID: -3423101426553943942}
   m_Layer: 0
   m_Name: Grape
   m_TagString: Untagged
@@ -288,6 +289,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   grapeProjectilePrefab: {fileID: 7044547377198549826, guid: e7d1328a1aa037b42877204a68c12951, type: 3}
+--- !u!114 &-3423101426553943942
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 859939581739548111}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7def454037850448adc6b7f78f6ab06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  goldCoin: {fileID: 8516340296537420173, guid: efeeb52acfb44fb458a857db0c8afba0, type: 3}
+  healthGlobe: {fileID: 8516340296537420173, guid: 09b53527453b3b0408aa537269290724, type: 3}
+  staminaGlobe: {fileID: 8516340296537420173, guid: c84f1ece454e092469f7a26c2759bdd3, type: 3}
 --- !u!1 &2001324554348096221
 GameObject:
   m_ObjectHideFlags: 0
