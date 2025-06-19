@@ -97,7 +97,7 @@ public class Pickup : MonoBehaviour
                 Debug.Log("Picked up a HEALTH GLOBE!");
                 break;
             case PickupType.StaminaGlobe:
-                // Handle stamina globe logic
+                Stamina.Instance.RefreshStamina();
                 Debug.Log("Picked up a STAMINA GLOBE!");
                 break;
         }
