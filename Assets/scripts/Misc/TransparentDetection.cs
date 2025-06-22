@@ -18,24 +18,37 @@ public class TransparentDetection : MonoBehaviour
         tilemap = GetComponent<Tilemap>();
     }
 
-    private void OnTriggerEnter2D(Collider2D other) {
-        if (other.gameObject.GetComponent<PlayerController>()) {
-            if (spriteRenderer) {
-            StartCoroutine(FadeRoutine(spriteRenderer, fadeTime, spriteRenderer.color.a, transperancyAmount));
-        } else if (tilemap) {
-            StartCoroutine(FadeRoutine(tilemap, fadeTime, tilemap.color.a, transperancyAmount));
-        }
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.GetComponent<PlayerController>())
+        {
+            if (spriteRenderer)
+            {
+                StartCoroutine(FadeRoutine(spriteRenderer, fadeTime, spriteRenderer.color.a, transperancyAmount));
+            }
+            else if (tilemap)
+            {
+                StartCoroutine(FadeRoutine(tilemap, fadeTime, tilemap.color.a, transperancyAmount));
+            }
         }
     }
 
     private void OnTriggerExit2D(Collider2D other)
     {
+        if (!gameObject.activeInHierarchy)
+        {
+            return;
+        }
         if (other.gameObject.GetComponent<PlayerController>())
         {
-            if (spriteRenderer) 
+            if (spriteRenderer)
+            {
                 StartCoroutine(FadeRoutine(spriteRenderer, fadeTime, spriteRenderer.color.a, 1f));
-            else if (tilemap) 
+            }
+            else if (tilemap)
+            {
                 StartCoroutine(FadeRoutine(tilemap, fadeTime, tilemap.color.a, 1f));
+            }
         }
     }
 
@@ -61,5 +74,10 @@ public class TransparentDetection : MonoBehaviour
             tilemap.color = new Color(tilemap.color.r, tilemap.color.g, tilemap.color.b, newAlpha);
             yield return null;
         }
+    }
+
+    private void OnDisable()
+    {
+        Debug.Log("[TransparentDetection] Canopy was disabled! (OnDisable called)");
     }
 }
