@@ -48,7 +48,8 @@ public class PlayerController : Singleton<PlayerController>
         playerControls.Enable();
     }
 
-    private void OnDisable() {
+    private void OnDisable()
+    {
         playerControls.Disable();
     }
 
@@ -67,7 +68,7 @@ public class PlayerController : Singleton<PlayerController>
     {
         return weaponCollider;
     }
-    private void PlayerInput() 
+    private void PlayerInput()
     {
         movement = playerControls.Movement.Move.ReadValue<Vector2>();
 
@@ -75,9 +76,10 @@ public class PlayerController : Singleton<PlayerController>
         myAnimator.SetFloat("moveY", movement.y);
     }
 
-    private void Move() {
-        if (knockback.GettingKnockedBack || PlayerHealth.Instance.isDead) { return; }
-        
+    private void Move()
+    {
+        if (knockback.GettingKnockedBack || PlayerHealth.Instance.IsDead) { return; }
+
         rb.MovePosition(rb.position + movement * (moveSpeed * Time.fixedDeltaTime));
     }
 
@@ -100,7 +102,8 @@ public class PlayerController : Singleton<PlayerController>
 
     private void Dash()
     {
-        if (!isDashing && Stamina.Instance.CurrentStamina > 0) {
+        if (!isDashing && Stamina.Instance.CurrentStamina > 0)
+        {
             Stamina.Instance.UseStamina();
             isDashing = true;
             moveSpeed *= dashSpeed;

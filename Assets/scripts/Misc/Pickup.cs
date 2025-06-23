@@ -100,6 +100,8 @@ public class Pickup : MonoBehaviour
                 Stamina.Instance.RefreshStamina();
                 Debug.Log("Picked up a STAMINA GLOBE!");
                 break;
+            default:
+                break;
         }
     }
 }
