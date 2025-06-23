@@ -13,14 +13,12 @@ public class Shooter : MonoBehaviour, IEnemy
     [SerializeField] private float timeBetweenBursts;
     [SerializeField] private float restTime = 1f;
     [SerializeField] private bool stagger;
-    [Tooltip("Stagger has to be enabled for oscillate to work properly.")]
+    [Tooltip("Stagger must be enabled for oscillate to function properly.")]
     [SerializeField] private bool oscillate;
-    
+
     private bool isShooting = false;
 
     private void OnValidate() {
-        if (oscillate) { stagger = true; }
-        if (!oscillate) { stagger = false; }
         if (projectilesPerBurst < 1) { projectilesPerBurst = 1; }
         if (burstCount < 1) { burstCount = 1; }
         if (timeBetweenBursts < 0.1f) { timeBetweenBursts = 0.1f; }
@@ -30,10 +28,8 @@ public class Shooter : MonoBehaviour, IEnemy
         if (bulletMoveSpeed <= 0) { bulletMoveSpeed = 0.1f; }
     }
 
-    public void Attack()
-    {
-        if (!isShooting)
-        {
+    public void Attack() {
+        if (!isShooting) {
             StartCoroutine(ShootRoutine());
         }
     }
@@ -44,29 +40,27 @@ public class Shooter : MonoBehaviour, IEnemy
 
         float startAngle, currentAngle, angleStep, endAngle;
         float timeBetweenProjectiles = 0f;
-        
+
         TargetConeOfInfluence(out startAngle, out currentAngle, out angleStep, out endAngle);
-        
+
         if (stagger) { timeBetweenProjectiles = timeBetweenBursts / projectilesPerBurst; }
 
         for (int i = 0; i < burstCount; i++)
         {
-            if (!oscillate)
-            {
+            if (!oscillate) {
                 TargetConeOfInfluence(out startAngle, out currentAngle, out angleStep, out endAngle);
-            }
-            if (oscillate && i % 2 != 1)
-            {
+            } 
+            
+            if (oscillate && i % 2 != 1) {
                 TargetConeOfInfluence(out startAngle, out currentAngle, out angleStep, out endAngle);
-            }
-            else if (oscillate)
-            {
+            } else if (oscillate) {
                 currentAngle = endAngle;
                 endAngle = startAngle;
                 startAngle = currentAngle;
                 angleStep *= -1;
             }
-        
+           
+
             for (int j = 0; j < projectilesPerBurst; j++)
             {
                 Vector2 pos = FindBulletSpawnPos(currentAngle);
@@ -86,7 +80,7 @@ public class Shooter : MonoBehaviour, IEnemy
 
             currentAngle = startAngle;
 
-            if (!stagger) { yield return new WaitForSeconds(timeBetweenProjectiles); }   
+            if (!stagger) { yield return new WaitForSeconds(timeBetweenBursts); }
         }
 
         yield return new WaitForSeconds(restTime);
@@ -105,15 +99,14 @@ public class Shooter : MonoBehaviour, IEnemy
         if (angleSpread != 0)
         {
             angleStep = angleSpread / (projectilesPerBurst - 1);
-            halfAngleSpread = angleStep / 2f;
+            halfAngleSpread = angleSpread / 2f;
             startAngle = targetAngle - halfAngleSpread;
             endAngle = targetAngle + halfAngleSpread;
             currentAngle = startAngle;
         }
     }
 
-    private Vector2 FindBulletSpawnPos(float currentAngle)
-    {
+    private Vector2 FindBulletSpawnPos(float currentAngle) {
         float x = transform.position.x + startingDistance * Mathf.Cos(currentAngle * Mathf.Deg2Rad);
         float y = transform.position.y + startingDistance * Mathf.Sin(currentAngle * Mathf.Deg2Rad);
 

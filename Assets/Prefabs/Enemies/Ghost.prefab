@@ -27,7 +27,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2378061547544183111
 Transform:
   m_ObjectHideFlags: 0
@@ -173,8 +173,8 @@ MonoBehaviour:
   roamChangedDirFloat: 2
   attackRange: 5
   enemyType: {fileID: 8948733236456072679}
-  attackCooldown: 2
-  stopMovingWhileAttacking: 0
+  attackCooldown: 1
+  stopMovingWhileAttacking: 1
 --- !u!114 &2472058982030330812
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -267,15 +267,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 2876579900553910490, guid: e48d5256de0f23f4e9655c5c74f6f5d4, type: 3}
-  bulletMoveSpeed: 6
-  burstCount: 12
-  projectilesPerBurst: 1
-  angleSpread: 146
-  startingDistance: 0.3
-  timeBetweenBursts: 1
+  bulletMoveSpeed: 4
+  burstCount: 1
+  projectilesPerBurst: 2
+  angleSpread: 2
+  startingDistance: 0.1
+  timeBetweenBursts: 0.1
   restTime: 0.1
-  stagger: 1
-  oscillate: 1
+  stagger: 0
+  oscillate: 0
 --- !u!114 &7152555576308397452
 MonoBehaviour:
   m_ObjectHideFlags: 0
